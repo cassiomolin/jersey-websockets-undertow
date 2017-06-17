@@ -1,5 +1,8 @@
 # Undertow example with WebSockets (JSR 356) and Jersey
 
+[![Build Status](https://travis-ci.org/cassiomolin/undertow-websockets-jersey.svg?branch=master)](https://travis-ci.org/cassiomolin/undertow-websockets-jersey)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/undertow-websockets-jersey/master/LICENSE.txt)
+
 More details about the application: Coming soon
 
 ## How to build and run this application?
