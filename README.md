@@ -17,5 +17,5 @@ To build and run this application, follow these steps:
 1. You should see a file with the following or a similar name: `undertow-websockets-jersey-1.0.jar`.
 1. Execute the JAR: `java -jar undertow-websockets-jersey-1.0.jar`.
 1. The following endpoints will be available:
-  - `http://localhost:8080/api/messages`: REST endpoint over HTTP to create messages
-  - `ws://localhost:8080/push`: WebSocket endpoint to receive messages from the server
+    - `http://localhost:8080/api/messages`: REST endpoint over HTTP to create messages
+    - `ws://localhost:8080/push`: WebSocket endpoint to receive messages from the server
