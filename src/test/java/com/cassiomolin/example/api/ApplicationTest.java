@@ -3,8 +3,8 @@ package com.cassiomolin.example.api;
 
 import com.cassiomolin.example.Application;
 import com.cassiomolin.example.domain.Message;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,12 +18,19 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
 public class ApplicationTest {
+
+    private static final String WELCOME_MESSAGE = "Welcome";
+    private static final String BROADCAST_MESSAGE = "Hey";
+
+    private static final String REST_API_BASE_URI = "http://localhost:9090/api";
+    private static final String WEBSOCKETS_BASE_URI = "ws://localhost:9090";
 
     @BeforeClass
     public static void beforeClass() {
@@ -38,41 +45,83 @@ public class ApplicationTest {
     @Test
     public void test() throws URISyntaxException, IOException, DeploymentException, InterruptedException {
 
-        CountDownLatch messageLatch = new CountDownLatch(2);
+        CountDownLatch countDown = new CountDownLatch(2);
 
-        ClientEndpointConfig config = ClientEndpointConfig.Builder.create().build();
+        ClientEndpointConfig config = ClientEndpointConfig.Builder.create()
+                .decoders(Arrays.asList(MessageDecoder.class)).build();
 
         WebSocketContainer webSocketContainer = ContainerProvider.getWebSocketContainer();
         webSocketContainer.connectToServer(new Endpoint() {
 
             @Override
             public void onOpen(Session session, EndpointConfig config) {
-                session.addMessageHandler(String.class, message -> {
-                    System.out.println("Received message: " + message);
-                    messageLatch.countDown();
+                session.addMessageHandler(Message.class, message -> {
+                    System.out.println("Received message: " + message.getMessage());
+
+                    switch ((int) countDown.getCount()) {
+
+                        case 2:
+                            assertEquals(WELCOME_MESSAGE, message.getMessage());
+                            break;
+
+                        case 1:
+                            assertEquals(BROADCAST_MESSAGE, message.getMessage());
+                            break;
+                    }
+
+                    countDown.countDown();
                 });
             }
 
             @Override
             public void onError(Session session, Throwable thr) {
-                messageLatch.countDown();
+                countDown.countDown();
             }
 
-        }, config, new URI("ws://localhost:9090/push"));
+        }, config, new URI(WEBSOCKETS_BASE_URI + "/push"));
 
-        messageLatch.await(1, TimeUnit.SECONDS);
+        countDown.await(1, TimeUnit.SECONDS);
 
         Message message = new Message();
-        message.setMessage("Hey");
+        message.setMessage(BROADCAST_MESSAGE);
 
         Client restClient = ClientBuilder.newClient();
         restClient.register(JacksonJaxbJsonProvider.class);
 
-        Response response = restClient.target("http://localhost:9090/api/messages")
+        Response response = restClient.target(REST_API_BASE_URI).path("messages")
                 .request().post(Entity.entity(message, MediaType.APPLICATION_JSON));
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
 
-        messageLatch.await(1, TimeUnit.SECONDS);
+        countDown.await(1, TimeUnit.SECONDS);
+    }
+
+    private static class MessageDecoder implements Decoder.Text<Message> {
+
+        private final ObjectMapper mapper = new ObjectMapper();
+
+        @Override
+        public void init(EndpointConfig endpointConfig) {
+
+        }
+
+        @Override
+        public void destroy() {
+
+        }
+
+        @Override
+        public Message decode(String s) throws DecodeException {
+            try {
+                return mapper.readValue(s, Message.class);
+            } catch (IOException e) {
+                throw new DecodeException(s, "Cannot decode message", e);
+            }
+        }
+
+        @Override
+        public boolean willDecode(String s) {
+            return true;
+        }
     }
 }
 
