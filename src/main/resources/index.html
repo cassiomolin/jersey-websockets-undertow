@@ -1,0 +1,45 @@
+<html>
+<head><title>Web Socket Test</title></head>
+<body>
+<script>
+
+    const socket = new WebSocket("ws://localhost:8080/push");
+
+    socket.onmessage = function (event) {
+        displayMessage(document.getElementById("received-messages"), "Received message: " + JSON.parse(event.data).message);
+    };
+
+    socket.onopen = function (event) {
+        displayMessage(document.getElementById("received-messages"), "WebSocket connection open");
+    };
+
+    socket.onclose = function (event) {
+        displayMessage(document.getElementById("received-messages"), "WebSocket connection closed");
+    };
+
+    function displayMessage(element, message) {
+        element.insertAdjacentHTML('beforeend', message);
+        element.insertAdjacentHTML('beforeend', "<br>");
+    }
+
+    function sendMessage(message) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://localhost:8080/api/messages");
+
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify({message: message}));
+    }
+
+</script>
+
+<form onsubmit="return false;">
+    <input type="text" name="message" value="Hello, World!"/>
+    <input type="button" value="Broadcast message" onclick="sendMessage(this.form.message.value)"/>
+
+</form>
+
+<p>Messages:</p>
+<div id="received-messages"></div>
+
+</body>
+</html>

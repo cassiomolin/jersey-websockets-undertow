@@ -6,6 +6,7 @@ import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.DefaultByteBufferPool;
 import io.undertow.server.handlers.PathHandler;
+import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
@@ -31,7 +32,7 @@ public class Application {
 
     private static final int DEFAULT_PORT = 8080;
 
-    private static final Logger logger = Logger.getLogger(PushEndpoint.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PushEndpoint.class.getName());
 
     /**
      * Start server on the port 8080.
@@ -49,7 +50,7 @@ public class Application {
      */
     public static void startServer(int port) {
 
-        logger.info(String.format("Starting server on port %d", port));
+        LOGGER.info(String.format("Starting server on port %d", port));
 
         PathHandler path = Handlers.path();
 
@@ -60,13 +61,14 @@ public class Application {
 
         server.start();
 
-        logger.info(String.format("Server started on port %d", port));
+        LOGGER.info(String.format("Server started on port %d", port));
 
         DeploymentInfo servletBuilder = Servlets.deployment()
                 .setClassLoader(Application.class.getClassLoader())
                 .setContextPath("/")
-                .setDeploymentName("application.war")
+                .addWelcomePage("index.html")
                 .addListeners(listener(Listener.class))
+                .setResourceManager(new ClassPathResourceManager(Application.class.getClassLoader()))
                 .addServlets(
                         Servlets.servlet("jerseyServlet", ServletContainer.class)
                                 .setLoadOnStartup(1)
@@ -75,9 +77,10 @@ public class Application {
                 .addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME,
                         new WebSocketDeploymentInfo()
                                 .setBuffers(new DefaultByteBufferPool(true, 100))
-                                .addEndpoint(PushEndpoint.class));
+                                .addEndpoint(PushEndpoint.class))
+                .setDeploymentName("application.war");
 
-        logger.info("Starting application deployment");
+        LOGGER.info("Starting application deployment");
 
         deploymentManager = Servlets.defaultContainer().addDeployment(servletBuilder);
         deploymentManager.deploy();
@@ -88,7 +91,7 @@ public class Application {
             throw new RuntimeException(e);
         }
 
-        logger.info("Application deployed");
+        LOGGER.info("Application deployed");
     }
 
     /**
@@ -100,11 +103,11 @@ public class Application {
             throw new IllegalStateException("Server has not been started yet");
         }
 
-        logger.info("Stopping server");
+        LOGGER.info("Stopping server");
 
         deploymentManager.undeploy();
         server.stop();
 
-        logger.info("Server stopped");
+        LOGGER.info("Server stopped");
     }
 }
