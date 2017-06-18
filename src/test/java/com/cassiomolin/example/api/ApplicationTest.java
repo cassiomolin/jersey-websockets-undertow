@@ -81,7 +81,7 @@ public class ApplicationTest {
 
         }, config, new URI(WEBSOCKETS_BASE_URI + "/push"));
 
-        countDown.await(1, TimeUnit.SECONDS);
+        countDown.await(5, TimeUnit.SECONDS);
 
         Message message = new Message();
         message.setMessage(BROADCAST_MESSAGE);
@@ -93,7 +93,7 @@ public class ApplicationTest {
                 .request().post(Entity.entity(message, MediaType.APPLICATION_JSON));
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
 
-        countDown.await(1, TimeUnit.SECONDS);
+        countDown.await(5, TimeUnit.SECONDS);
     }
 
     private static class MessageDecoder implements Decoder.Text<Message> {
