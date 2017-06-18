@@ -1,4 +1,4 @@
-package com.cassiomolin.example.api.endpoints;
+package com.cassiomolin.example.api.websockets;
 
 import com.cassiomolin.example.domain.Message;
 
@@ -8,8 +8,9 @@ import javax.websocket.OnClose;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 /**
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
         configurator = CdiAwareConfigurator.class)
 public class PushEndpoint {
 
-    private static final Set<Session> sessions = ConcurrentHashMap.newKeySet();
+    private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
 
     private static final Logger logger = Logger.getLogger(PushEndpoint.class.getName());
 
