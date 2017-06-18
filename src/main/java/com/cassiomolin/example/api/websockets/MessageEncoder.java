@@ -13,7 +13,7 @@ import javax.websocket.EndpointConfig;
  *
  * @author cassiomolin
  */
-class MessageEncoder implements Encoder.Text<Message> {
+public class MessageEncoder implements Encoder.Text<Message> {
 
     private final ObjectMapper mapper = new ObjectMapper();
 

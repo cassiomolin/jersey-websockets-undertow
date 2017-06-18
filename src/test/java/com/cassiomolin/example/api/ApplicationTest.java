@@ -23,6 +23,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ApplicationTest {
 
@@ -62,7 +63,7 @@ public class ApplicationTest {
                     switch ((int) countDown.getCount()) {
 
                         case 2:
-                            assertEquals(WELCOME_MESSAGE, message.getMessage());
+                            assertTrue(message.getMessage().startsWith(WELCOME_MESSAGE));
                             break;
 
                         case 1:

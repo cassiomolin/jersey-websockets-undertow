@@ -1,5 +1,7 @@
-package com.cassiomolin.example.api.websockets;
+package com.cassiomolin.example.api.websockets.endpoints;
 
+import com.cassiomolin.example.api.websockets.CdiAwareConfigurator;
+import com.cassiomolin.example.api.websockets.MessageEncoder;
 import com.cassiomolin.example.domain.Message;
 
 import javax.enterprise.context.Dependent;
@@ -36,7 +38,7 @@ public class PushEndpoint {
         logger.info(String.format("Session %s opened", session.getId()));
 
         Message message = new Message();
-        message.setMessage("Welcome");
+        message.setMessage("Welcome " + session.getId());
         session.getAsyncRemote().sendObject(message);
     }
 

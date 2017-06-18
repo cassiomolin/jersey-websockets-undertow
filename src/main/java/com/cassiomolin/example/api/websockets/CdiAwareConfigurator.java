@@ -8,7 +8,7 @@ import javax.websocket.server.ServerEndpointConfig;
  *
  * @author cassiomolin
  */
-class CdiAwareConfigurator extends ServerEndpointConfig.Configurator {
+public class CdiAwareConfigurator extends ServerEndpointConfig.Configurator {
 
     public <T> T getEndpointInstance(Class<T> endpointClass) throws InstantiationException {
         return CDI.current().select(endpointClass).get();
