@@ -21,4 +21,4 @@ Follow these steps to build and run this application:
 1. A page to test the application will be available at `http://localhost:8080/index.html`
 1. The following endpoints are also be available:
     - `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to WebSocket client.
-    - `ws://localhost:8080/push`: WebSocket endpoint to get pushed messages from the server.
+    - `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server.
