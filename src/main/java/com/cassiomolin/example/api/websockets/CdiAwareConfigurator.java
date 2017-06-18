@@ -1,10 +1,10 @@
-package com.cassiomolin.example.api.endpoints;
+package com.cassiomolin.example.api.websockets;
 
 import javax.enterprise.inject.spi.CDI;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
- * Endpoint configurator. The endpoints instances are created and managed by CDI.
+ * Endpoint configurator. The websockets instances are created and managed by CDI.
  *
  * @author cassiomolin
  */

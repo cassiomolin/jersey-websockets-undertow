@@ -1,7 +1,7 @@
 package com.cassiomolin.example;
 
 import com.cassiomolin.example.api.JerseyConfig;
-import com.cassiomolin.example.api.endpoints.PushEndpoint;
+import com.cassiomolin.example.api.websockets.PushEndpoint;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.DefaultByteBufferPool;
@@ -14,7 +14,6 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.jboss.weld.environment.servlet.Listener;
 
 import javax.servlet.ServletException;
-
 import java.util.logging.Logger;
 
 import static io.undertow.servlet.Servlets.listener;

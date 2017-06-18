@@ -1,9 +1,8 @@
-package com.cassiomolin.example.api.endpoints;
+package com.cassiomolin.example.api.websockets;
 
 import com.cassiomolin.example.domain.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
