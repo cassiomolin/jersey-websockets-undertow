@@ -1,4 +1,4 @@
-# Example with Undertow, Weld, Jersey and WebSockets (JSR 356)
+# Example with Undertow, Weld, Jersey and WebSockets
 
 [![Build Status](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/example-undertow-jersey-websockets/master/LICENSE.txt)
