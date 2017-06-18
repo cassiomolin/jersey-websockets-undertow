@@ -29,12 +29,13 @@ public class ApplicationTest {
     private static final String WELCOME_MESSAGE = "Welcome";
     private static final String BROADCAST_MESSAGE = "Hey";
 
+    private static final int TEST_PORT = 9090;
     private static final String REST_API_BASE_URI = "http://localhost:9090/api";
     private static final String WEBSOCKETS_BASE_URI = "ws://localhost:9090";
 
     @BeforeClass
     public static void beforeClass() {
-        Application.startServer(9090);
+        Application.startServer(TEST_PORT);
     }
 
     @AfterClass
