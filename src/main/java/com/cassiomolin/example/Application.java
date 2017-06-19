@@ -32,7 +32,7 @@ public class Application {
 
     private static final int DEFAULT_PORT = 8080;
 
-    private static final Logger LOGGER = Logger.getLogger(PushEndpoint.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
 
     /**
      * Start server on the port 8080.
