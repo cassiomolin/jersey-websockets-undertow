@@ -3,9 +3,14 @@
 [![Build Status](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/example-undertow-jersey-websockets/master/LICENSE.txt)
 
-This application demonstrates how to use Weld, Jersey and WebSockets (JSR 356) in Undertow. 
+Example application using:
 
-In this example, a message created from the REST API is broadcasted to all Websocket clients. CDI events are used to send data from the REST API to the WebSocket endpoint.
+- **Undertow:** Servlet container
+- **Weld:** CDI reference implementation
+- **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java
+- **WebSockets:** Using the JSR-356 implementation provided by Undertow
+
+In this example, a message created from the REST API is broadcasted to all WebSocket clients. CDI events are used to send data from the REST API to the WebSocket endpoint.
 
 ## How to build and run this application?
 
