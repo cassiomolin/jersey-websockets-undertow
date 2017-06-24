@@ -8,7 +8,7 @@ Example application using:
 - **Undertow:** Servlet container
 - **Weld:** CDI reference implementation
 - **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java
-- **WebSockets:** Using the JSR-356 implementation provided by Undertow
+- **WebSockets:** Using the JSR 356 implementation provided by Undertow
 
 In this example, a message created from the REST API is broadcasted to all WebSocket clients. CDI events are used to send data from the REST API to the WebSocket endpoint.
 
