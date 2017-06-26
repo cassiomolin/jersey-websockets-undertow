@@ -12,7 +12,7 @@ Example application using:
 
 In this example, a message created from the REST API is broadcasted to all WebSocket clients. CDI events are used to send data from the REST API to the WebSocket endpoint.
 
-## How to build and run this application?
+## Building and running this application?
 
 Follow these steps to build and run this application:
 
@@ -23,7 +23,13 @@ Follow these steps to build and run this application:
 1. Change into the `target` directory: `cd target`
 1. You should see a file with the following or a similar name: `undertow-jersey-websockets-1.0.jar`.
 1. Execute the JAR: `java -jar undertow-jersey-websockets-1.0.jar`.
-1. A page to test the application will be available at `http://localhost:8080/index.html`
-1. The following endpoints will also be available:
-    - `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to WebSocket client.
-    - `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server.
+1. A page to test the application will be available at `http://localhost:8080`:
+
+<img src="src/main/doc/test page.png" width="650">
+
+
+The following endpoints will be available:
+
+- `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to WebSocket client
+
+- `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server

@@ -29,13 +29,13 @@ public class PushEndpoint {
 
     private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
 
-    private static final Logger logger = Logger.getLogger(PushEndpoint.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PushEndpoint.class.getName());
 
     @OnOpen
     public void onOpen(Session session) {
 
         sessions.add(session);
-        logger.info(String.format("Session %s opened", session.getId()));
+        LOGGER.info(String.format("Session %s opened", session.getId()));
 
         Message message = new Message();
         message.setMessage("Welcome " + session.getId());
@@ -45,7 +45,7 @@ public class PushEndpoint {
     @OnClose
     public void onClose(Session session) {
         sessions.remove(session);
-        logger.info(String.format("Session %s closed", session.getId()));
+        LOGGER.info(String.format("Session %s closed", session.getId()));
     }
 
     /**
@@ -55,7 +55,8 @@ public class PushEndpoint {
      */
     public void broadcast(@Observes Message message) {
 
-        logger.info(String.format("Broadcasting \"%s\" to %d sessions", message.getMessage(), sessions.size()));
+        LOGGER.info(String.format("Broadcasting \"%s\" to %d sessions", message.getMessage(), sessions.size()));
+
         synchronized (sessions) {
             sessions.forEach(session -> {
                 if (session.isOpen()) {

@@ -1,14 +1,72 @@
-<html>
-<head><title>Web Socket Test</title></head>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebSocket test</title>
+    <meta name="description" content="WebSocket test">
+    <meta name="author" content="Cassio Mazzochi Molin">
+
+    <style>
+
+        * {
+            outline: none;
+            font-size: 14px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        form input[type="text"],
+        form input[type="submit"] {
+            padding: 10px;
+            border: 2px solid #0277BD;
+        }
+
+        form input[type="text"] {
+            width: calc(100% - 15em);
+        }
+
+        form input[type="submit"] {
+            width: 13em;
+            background-color: #0277BD;
+            color: #FFF;
+            float: right;
+        }
+
+        form input[type="submit"]:hover,
+        form input[type="submit"]:focus {
+            border-color: #01579B;
+            background-color: #01579B;
+            cursor: pointer;
+        }
+
+        #received-messages {
+            margin-top: 10px;
+        }
+
+        #received-messages p {
+            padding: 10px;
+            margin: 0;
+            min-height: 20px;
+            line-height: 20px;
+        }
+
+        #received-messages p:nth-child(odd) {
+            background-color: #E1F5FE;
+        }
+
+        #received-messages p:nth-child(even) {
+            background-color: #FFF;
+        }
+
+    </style>
+
+</head>
 <body>
 
 <form onsubmit="return false;">
-    <input type="text" name="message" value="Hello, World!"/>
-    <input type="button" value="Broadcast message" onclick="sendMessage(this.form.message.value)"/>
-
+    <input type="text" id="message" placeholder="Enter a message" value="Hello, World!"/>
+    <input type="submit" value="Broadcast message" onclick="sendMessage()"/>
 </form>
 
-<p>Messages:</p>
 <div id="received-messages"></div>
 
 <script>
@@ -16,28 +74,36 @@
     const socket = new WebSocket("ws://localhost:8080/push");
 
     socket.onmessage = function (event) {
-        displayMessage(document.getElementById("received-messages"), "Received message: " + JSON.parse(event.data).message);
+        displayMessage(JSON.parse(event.data).message);
     };
 
     socket.onopen = function (event) {
-        displayMessage(document.getElementById("received-messages"), "WebSocket connection open");
+        displayMessage("WebSocket connection open");
     };
 
     socket.onclose = function (event) {
-        displayMessage(document.getElementById("received-messages"), "WebSocket connection closed");
+        displayMessage("WebSocket connection closed");
     };
 
-    function displayMessage(element, message) {
-        element.insertAdjacentHTML('beforeend', message);
-        element.insertAdjacentHTML('beforeend', "<br>");
-    }
+    function sendMessage() {
 
-    function sendMessage(message) {
+        var message = document.getElementById("message");
+
         var request = new XMLHttpRequest();
         request.open("POST", "http://localhost:8080/api/messages");
 
         request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify({message: message}));
+        request.send(JSON.stringify({message: message.value}));
+
+        message.value = "";
+    }
+
+    function displayMessage(message) {
+
+        var p = document.createElement("p");
+        p.appendChild(document.createTextNode(message));
+
+        document.getElementById("received-messages").appendChild(p);
     }
 
 </script>

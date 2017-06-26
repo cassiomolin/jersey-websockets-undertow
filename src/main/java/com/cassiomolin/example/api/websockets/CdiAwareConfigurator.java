@@ -4,7 +4,7 @@ import javax.enterprise.inject.spi.CDI;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
- * Endpoint configurator. The websockets instances are created and managed by CDI.
+ * CDI configurator for WebSocket endpoints (instances are managed by CDI).
  *
  * @author cassiomolin
  */
