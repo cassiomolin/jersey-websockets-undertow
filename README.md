@@ -23,10 +23,9 @@ Follow these steps to build and run this application:
 1. Change into the `target` directory: `cd target`
 1. You should see a file with the following or a similar name: `undertow-jersey-websockets-1.0.jar`.
 1. Execute the JAR: `java -jar undertow-jersey-websockets-1.0.jar`.
-1. A page to test the application will be available at `http://localhost:8080`:
+1. A page to test the application will be available at `http://localhost:8080/index.html`:
 
 <img src="src/main/doc/test page.png" width="650">
-
 
 The following endpoints will be available:
 
