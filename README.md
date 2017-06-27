@@ -35,10 +35,10 @@ This application uses [Undertow](http://undertow.io/), a lighweight Servlet cont
 
 The uber-jar is created with the [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/), that provides the capability to create an executable jar including its dependencies.
 
-[CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
-
 ### Using the application
 
 Browse to `http://localhost:8080/index.html`, type a message in the text field and click _Broadcast message_ to send the message to all WebSocket clients. A new WebSocket connection will be created for each tab you open and the message will be broadcasted to them as well.
 
 <img src="src/main/doc/test page.png" width="650">
+
+[CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
