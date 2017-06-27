@@ -23,14 +23,9 @@ Follow these steps to build and run this application:
 1. Change into the `target` directory: `cd target`
 1. You should see a file with the following or a similar name: `undertow-jersey-websockets-1.0.jar`.
 1. Execute the JAR: `java -jar undertow-jersey-websockets-1.0.jar`.
-1. A page to test the application will be available at `http://localhost:8080/index.html`:
-
-<img src="src/main/doc/test page.png" width="650">
-
-The following endpoints will be available:
-
-- `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to the WebSocket clients
-- `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server
+1. A page to test the application will be available at `http://localhost:8080/index.html`. The following endpoints will be available:
+   1. `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to the WebSocket clients
+   1. `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server
 
 ### Quick words on Undertow and uber-jars
 
@@ -41,3 +36,9 @@ This application uses [Undertow](http://undertow.io/), a lighweight Servlet cont
 The uber-jar is created with the [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/), that provides the capability to create an executable jar including its dependencies.
 
 [CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
+
+### Using the application
+
+Browse to `http://localhost:8080/index.html`, type a message in the text field and click _Broadcast message_ to send the message to all WebSocket clients. A new WebSocket connection will be created for each tab you open and the message will be broadcasted to them as well.
+
+<img src="src/main/doc/test page.png" width="650">
