@@ -5,10 +5,10 @@
 
 Example application using:
 
-- **Undertow:** Servlet container
-- **Weld:** CDI reference implementation
-- **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java
-- **WebSockets:** Using the JSR 356 implementation provided by Undertow
+- **Undertow:** Servlet container.
+- **Weld:** CDI reference implementation.
+- **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java.
+- **WebSockets:** Using the JSR 356 implementation provided by Undertow.
 
 In this example, a message created from the REST API is broadcasted to all WebSocket clients. [CDI events][] are used to send data from the REST API to the WebSocket endpoint.
 
@@ -30,7 +30,14 @@ Follow these steps to build and run this application:
 The following endpoints will be available:
 
 - `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to the WebSocket clients
-
 - `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server
+
+### Quick words on Undertow and uber-jars
+
+This application is packed as an [uber-jar](https://stackoverflow.com/q/11947037/1426227), making it easy to run, so you don't need to be bothered by installing a servlet container such as Tomcat and then deploy the application on it. Just execute `java -jar <jar-file>` and the application will be up and running. 
+
+This application uses [Undertow](http://undertow.io/), a lighweight Servlet container designed to be fully embeddable. It's used as the default web server in the Wildfly Application Server.
+
+The uber-jar is created with the [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/), that provides the capability to create an executable jar including its dependencies.
 
 [CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
