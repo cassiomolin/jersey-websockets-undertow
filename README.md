@@ -10,7 +10,7 @@ Example application using:
 - **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java
 - **WebSockets:** Using the JSR 356 implementation provided by Undertow
 
-In this example, a message created from the REST API is broadcasted to all WebSocket clients. CDI events are used to send data from the REST API to the WebSocket endpoint.
+In this example, a message created from the REST API is broadcasted to all WebSocket clients. [CDI events][] are used to send data from the REST API to the WebSocket endpoint.
 
 ## Building and running this application?
 
@@ -29,6 +29,8 @@ Follow these steps to build and run this application:
 
 The following endpoints will be available:
 
-- `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to WebSocket client
+- `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to the WebSocket clients
 
 - `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server
+
+[CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
