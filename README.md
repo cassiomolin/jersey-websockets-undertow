@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/example-undertow-jersey-websockets/master/LICENSE.txt)
 
-Example application using:
+Example of application using:
 
 - **Undertow:** Servlet container.
 - **Weld:** CDI reference implementation.
@@ -12,7 +12,7 @@ Example application using:
 
 In this example, a message created from the REST API is broadcasted to all WebSocket clients. [CDI events][] are used to send data from the REST API to the WebSocket endpoint.
 
-## Building and running this application?
+## Building and running this application
 
 Follow these steps to build and run this application:
 
