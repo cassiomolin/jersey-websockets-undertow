@@ -1,4 +1,4 @@
-package com.cassiomolin.example.api.websockets;
+package com.cassiomolin.example.api.websocket.codec;
 
 import com.cassiomolin.example.domain.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,4 +1,4 @@
-package com.cassiomolin.example.api.rest.resources;
+package com.cassiomolin.example.api.rest;
 
 import com.cassiomolin.example.domain.Message;
 import com.cassiomolin.example.service.MessageService;

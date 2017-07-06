@@ -1,6 +1,6 @@
-package com.cassiomolin.example.api.rest;
+package com.cassiomolin.example.api.rest.config;
 
-import com.cassiomolin.example.api.rest.resources.MessageResource;
+import com.cassiomolin.example.api.rest.MessageResource;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 

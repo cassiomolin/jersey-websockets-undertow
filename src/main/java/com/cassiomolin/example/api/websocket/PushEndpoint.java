@@ -1,7 +1,7 @@
-package com.cassiomolin.example.api.websockets.endpoints;
+package com.cassiomolin.example.api.websocket;
 
-import com.cassiomolin.example.api.websockets.CdiAwareConfigurator;
-import com.cassiomolin.example.api.websockets.MessageEncoder;
+import com.cassiomolin.example.api.websocket.config.CdiAwareConfigurator;
+import com.cassiomolin.example.api.websocket.codec.MessageEncoder;
 import com.cassiomolin.example.domain.Message;
 
 import javax.enterprise.context.Dependent;

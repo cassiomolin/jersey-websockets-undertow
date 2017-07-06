@@ -1,7 +1,7 @@
 package com.cassiomolin.example;
 
-import com.cassiomolin.example.api.rest.JerseyConfig;
-import com.cassiomolin.example.api.websockets.endpoints.PushEndpoint;
+import com.cassiomolin.example.api.rest.config.JerseyConfig;
+import com.cassiomolin.example.api.websocket.PushEndpoint;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.DefaultByteBufferPool;
