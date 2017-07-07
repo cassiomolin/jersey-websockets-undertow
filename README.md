@@ -1,6 +1,6 @@
 # Example with Undertow, Weld, Jersey and WebSockets
 
-[![Build Status](https://travis-ci.org/cassiomolin/rest-api-and-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
+[![Build Status](https://travis-ci.org/cassiomolin/rest-api-and-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/rest-api-and-websockets)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/rest-api-and-websockets/master/LICENSE.txt)
 
 Example of application using:
