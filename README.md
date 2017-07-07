@@ -1,11 +1,11 @@
 # Example with Undertow, Weld, Jersey and WebSockets
 
-[![Build Status](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/example-undertow-jersey-websockets/master/LICENSE.txt)
+[![Build Status](https://travis-ci.org/cassiomolin/rest-api-and-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/example-undertow-jersey-websockets)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/rest-api-and-websockets/master/LICENSE.txt)
 
 Example of application using:
 
-- **Undertow:** Servlet container.
+- **Undertow:** Servlet container that also provides WebSockets support (JSR 356 implementation).
 - **Weld:** CDI reference implementation.
 - **Jersey:** JAX-RS reference implementation for creating RESTful web services in Java.
 - **WebSockets:** Using the JSR 356 implementation provided by Undertow.
