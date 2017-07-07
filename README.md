@@ -1,7 +1,7 @@
 # Example with Undertow, Weld, Jersey and WebSockets
 
-[![Build Status](https://travis-ci.org/cassiomolin/rest-api-and-websockets.svg?branch=master)](https://travis-ci.org/cassiomolin/rest-api-and-websockets)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/rest-api-and-websockets/master/LICENSE.txt)
+[![Build Status](https://travis-ci.org/cassiomolin/jersey-websockets-undertow.svg?branch=master)](https://travis-ci.org/cassiomolin/jersey-websockets-undertow)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cassiomolin/jersey-websockets-undertow/master/LICENSE.txt)
 
 Example of application using:
 
@@ -40,5 +40,18 @@ The uber-jar is created with the [Apache Maven Shade Plugin](https://maven.apach
 Browse to `http://localhost:8080/index.html`, type a message in the text field and click _Broadcast message_ to send the message to all WebSocket clients. A new WebSocket connection will be created for each tab you open and the message will be broadcasted to them as well.
 
 <img src="src/main/doc/test page.png" width="650">
+
+Alternatively to the test page, you can broadcast a message with cURL:
+
+```bash
+curl -X POST \
+  'http://localhost:8080/api/messages' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "message": "Hello from cURL!"
+}'
+```
+
+Postman also can be used to target the API. Refer to the [`postman`](src/main/postman) directory for the collection files.
 
 [CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
