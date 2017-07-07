@@ -1,0 +1,31 @@
+{
+	"variables": [],
+	"info": {
+		"name": "jersey-websockets-undertow",
+		"_postman_id": "c0ccfbe2-3410-6884-6cc5-e56fedea80c2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Broadcast message",
+			"request": {
+				"url": "{{config.baseUrl}}/api/messages",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message\": \"Hello from Postman!\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

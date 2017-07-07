@@ -21,8 +21,8 @@ Follow these steps to build and run this application:
 1. Compile the project: `mvn clean compile`.
 1. Package the application: `mvn package`.
 1. Change into the `target` directory: `cd target`
-1. You should see a file with the following or a similar name: `undertow-jersey-websockets-1.0.jar`.
-1. Execute the JAR: `java -jar undertow-jersey-websockets-1.0.jar`.
+1. You should see a file with the following or a similar name: `jersey-websockets-undertow-1.0.jar`.
+1. Execute the JAR: `java -jar jersey-websockets-undertow-1.0.jar`.
 1. A page to test the application will be available at `http://localhost:8080/index.html`. The following endpoints will be available:
    1. `http://localhost:8080/api/messages`: REST endpoint over HTTP to broadcast a message to the WebSocket clients
    1. `ws://localhost:8080/push`: WebSocket endpoint to get messages pushed by the server
