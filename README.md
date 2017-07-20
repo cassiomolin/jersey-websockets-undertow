@@ -41,7 +41,7 @@ Browse to `http://localhost:8080/index.html`, type a message in the text field a
 
 <img src="src/main/doc/test page.png" width="650">
 
-Alternatively to the test page, you can broadcast a message with cURL:
+Alternatively to the test page, you can broadcast a message with [cURL][]:
 
 ```bash
 curl -X POST \
@@ -52,6 +52,8 @@ curl -X POST \
 }'
 ```
 
-Postman also can be used to target the API. Refer to the [`postman`](src/main/postman) directory for the collection files.
+And [Postman][] also can be used to target the REST API. Refer to the [`src/main/postman`](src/main/postman) directory for the collection files.
 
 [CDI events]: https://docs.oracle.com/javaee/7/tutorial/cdi-adv005.htm
+[cURL]: https://curl.haxx.se/
+[Postman]: https://www.getpostman.com/
