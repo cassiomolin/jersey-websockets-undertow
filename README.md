@@ -41,14 +41,14 @@ Browse to `http://localhost:8080/index.html`, type a message in the text field a
 
 <img src="src/main/doc/test page.png" width="650">
 
-Alternatively to the test page, you can broadcast a message with [cURL][]:
+Alternatively to the test page, you can broadcast a message with [curl][]:
 
 ```bash
 curl -X POST \
   'http://localhost:8080/api/messages' \
   -H 'Content-Type: application/json' \
   -d '{
-  "message": "Hello from cURL!"
+  "message": "Hello from curl!"
 }'
 ```
 
